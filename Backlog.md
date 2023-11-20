@@ -1,7 +1,8 @@
 | Tarefa           | Tempo | Responsável   |  Status | Finalizado | 
 |----------------|---------------|---------------|----------------|-----------|
-| Blablabla | 1 semana  | Nome | em progresso | - [x] ok?
-| Blablabla | 1 semana  | Nome  | em progresso | - [x] ok?
-| Blablabla | 1 semana  | Nome | em progresso | - [x] ok?
-| Blablabla | 1 semana  | Nome | em pausa | - [x] ok?
-| Blablabla | 1 semana | Nome | backlog | - [x] ok?
+| Setup do back-end | 2 dias  | Felipe | em progresso | - [] ok?
+| Setup do front-end | 2 dias  | Felipe  | em progresso | - [] ok?
+| Design de tela: tela inicial | 1 semana  | Bruno | em progresso | - [] ok?
+| Decidir modelagem back-end | 1 semana  | Felipe, Cauã, Giovanna | em pausa | - [} ok?
+| Estudar Spring: dois primeiros tutoriais | 1 semana | Cauã, Giovanna | em progresso | - [x] ok?
+| Exemplo | Tempo | Nome | em pausa | - [] ok?
