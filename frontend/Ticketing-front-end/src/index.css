@@ -1,0 +1,10 @@
+html {
+  min-height: 100%; /* Look, it's not fixed anymore! */
+
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  flex-grow: 1;
+}

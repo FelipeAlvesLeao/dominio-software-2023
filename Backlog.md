@@ -1,7 +1,7 @@
 | Tarefa           | Tempo | Responsável   |  Status | Finalizado | 
 |----------------|---------------|---------------|----------------|-----------|
-| Setup do back-end | 2 dias  | Felipe | em progresso | - [x] ok?
-| Setup do front-end | 2 dias  | Felipe  | em progresso | - [] ok?
+| Setup do back-end | 2 dias  | Felipe | feito | - [x] ok?
+| Setup do front-end | 2 dias  | Felipe  | feito | - [x] ok?
 | Estudar Figma  | 2 dias  | Felipe, Bruno | em progresso | - [] ok?
 | Colocar documentos na pasta docs | 2 dias  | Bruno  | em progresso | - [] ok?
 | Design de tela: tela inicial | 1 semana  | Bruno | em pausa | - [] ok?
