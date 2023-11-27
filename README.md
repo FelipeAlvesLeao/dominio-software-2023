@@ -1,6 +1,6 @@
 # Domínio de Software
-Repositório para a implementação de um sistema web para a disciplina Domínio de Software
-Integrantes:
+Repositório para a implementação de um sistema web para a disciplina Domínio de Software 
+</br>Integrantes:
 | Nome           | Github                                                |
 |----------------|-------------------------------------------------------|
 | Felipe A. Leão | [FelipeAlvesLeao](https://github.com/FelipeAlvesLeao) |
