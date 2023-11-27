@@ -10,7 +10,9 @@ public class Evento {
   public String endereco;
   @JsonFormat(pattern="yyyy-MM-dd")
   public Date dataInicial;
-  
+  @JsonFormat(pattern="yyyy-MM-dd")
+  public Date dataFinal;
+
   public Evento() {}
 
 //  Criar um construtor aqui com todos os parametros que são required
