@@ -3,3 +3,4 @@ https://vertabelo.com/blog/a-data-model-for-online-concert-ticket-sales/
 https://stackoverflow.com/questions/45262364/data-structure-for-movie-ticketing-system-in-mongodb
 https://rockset.com/blog/real-time-recommendations-event-ticketing-mongodb-rockset/
 https://www.mongodb.com/developer/languages/python/python-starlette-stitch/
+https://github.com/aaazureee/uow-event
