@@ -8,4 +8,6 @@
 | Decidir modelagem back-end | 1 semana  | Felipe, Cauã, Giovanna | em progresso | - [] ok?
 | Estudar Spring: dois primeiros tutoriais | 1 semana | Cauã, Giovanna | feito | - [x] ok?
 | Criar um backlog completo baseado em requisitos | 1 semana | Todos | em progresso | - [] ok?
-| Exemplo | Tempo | Nome | em pausa | - [] ok?
+| Criar endpoint: Bilhetes | 1 semana | Felipe, Cauã, Giovanna | em pausa | - [] ok?
+| Criar endpoint: Eventos | 1 semana | Felipe, Cauã, Giovanna | em pausa | - [] ok?
+| Dar como finalizado o design do front no Figma | 2 semanas | Bruno | em pausa | - [] ok?
