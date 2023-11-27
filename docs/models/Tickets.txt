@@ -1,0 +1,1 @@
+id: Number, evento: evento, usuario: usuario, dataCompra: Date
