@@ -1,1 +1,1 @@
-id: Number, nome: String, descricao: String, endereco: String, dataInicial: Date, dataFinal: Date, capacidade: Number, preco: Number, reservasAtuais { type: Number,default: 0 }, imagem: Buffer, duracao: Number, horario: Time
+id: Number, nome: String, descricao: String, eventType: {type: String, enum: [musical, palestra, hipertexto, feira, mostra, etc] }, endereco: String, dataInicial: Date, dataFinal: Date, capacidade: Number, preco: Number, reservasAtuais { type: Number,default: 0 }, imagem: Buffer, duracao: Number, horario: Time
