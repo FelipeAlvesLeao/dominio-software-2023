@@ -18,6 +18,6 @@
 | Criar endpoint: Atualizar Evento | 1 semana | Felipe| em teste | - [] ok?
 | Criar endpoint: Remover Evento | 1 semana | Felipe, Cauã, Giovanna | em teste | - [] ok?
 | Criar endpoint: Usuario | 1 semana | Giovanna | em pausa | - [] ok?
-| Criar endpoint: Ticket | 1 semana | Cauã | finalizado, aguardando revisão | - [x] ok?
+| Criar endpoint: Ticket | 1 semana | Cauã | feito | - [x] ok?
 | Dar como finalizado o design do front no Figma | 2 semanas | Bruno | em pausa | - [] ok?
 | Criar estrutura em esqueleto do Front-end | 1 semana | Pessoa | em pausa | - [] ok?
