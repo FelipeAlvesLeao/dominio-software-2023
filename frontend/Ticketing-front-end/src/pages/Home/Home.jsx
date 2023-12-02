@@ -2,7 +2,7 @@
 export default function Home() {
     return(
         <div>
-            <h2>Home</h2>
+            <img src="src/assets/splash.png" class="w-full"></img>
         </div>
     )
 }

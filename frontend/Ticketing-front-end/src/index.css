@@ -1,10 +1,4 @@
-html {
-  min-height: 100%; /* Look, it's not fixed anymore! */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  display: flex;
-  flex-direction: column;
-}
-
-body {
-  flex-grow: 1;
-}
