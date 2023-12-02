@@ -4,6 +4,8 @@ import dominios.api.ticketing.entity.Evento;
 import dominios.api.ticketing.service.EventoService;
 import dominios.api.ticketing.entity.Ticket;
 import dominios.api.ticketing.service.TicketService;
+import dominios.api.ticketing.entity.Usuario;
+import dominios.api.ticketing.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,8 @@ public class ServiceController {
     private EventoService eventoService;
     @Autowired
     private TicketService ticketService;
+    @Autowired
+    private UsuarioService usuarioService;
     @GetMapping("/evento/all")
     public List<Evento> getAll() {
         return eventoService.getAllEvento();
@@ -52,5 +56,26 @@ public class ServiceController {
     @DeleteMapping("/ticket/delete/{id}")
     public Ticket tdelete(String id) {
         return ticketService.deleteTicket(id);
+    }
+    
+        @GetMapping("/usuario/all")
+    public List<Usuario> usuarioGetAll() {
+        return usuarioService.getAllUsuario();
+    };
+    @GetMapping("/usuario/{id}")
+    public Usuario usuarioGetById(String id) {
+        return usuarioService.getUsuarioById(id);
+    };
+    @PostMapping("/usuario/add")
+    public Usuario usuarioAdd(Usuario usuario){
+        return usuarioService.addUsuario(usuario);
+    };
+    @DeleteMapping("/usuario/delete/{id}")
+    public Usuario usuarioDelete(String id) {
+        return usuarioService.deleteUsuario(id);
+    };
+    @PutMapping("/usuario/update/{id}")
+    public Usuario usuarioUpdate(@PathVariable String id, Usuario usuario) {
+        return usuarioService.updateUsuario(id, usuario);
     }
 }
