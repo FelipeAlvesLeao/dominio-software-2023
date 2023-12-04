@@ -215,9 +215,9 @@
     left: 100px;
     width: 50%;
     height: 50%;
-    background-image: url('images/logo2.png'); /* Substitua 'caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
+    background-image: url('images/logo2.png'); 
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 0; /* Coloca a imagem atrás do texto */
+    z-index: 0; 
   }
