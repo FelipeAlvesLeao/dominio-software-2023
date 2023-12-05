@@ -10,7 +10,7 @@
 | Criar um backlog completo baseado em requisitos | 1 semana | Todos | feito | - [x] ok?
 | Design de tela: login e registrar | 1 semana | Bruno | feito | - [x] ok?
 | Design de tela: página do evento selecionado | 1 semana | Pessoa | em pausa | - [] ok?
-| Design de tela: página de registrar evento | 1 semana | Pessoa | em pausa | - [] ok?
+| Design de tela: página de registrar evento | 1 semana | Bruno | feito | - [x] ok?
 | Criar endpoints baseado nos botões do front-end | 1 semana | Todos | feito | - [x] ok?
 | Criar endpoint: Registrar Evento | 1 semana | Felipe| finalizado com erro | - [x] ok?
 | Criar endpoint: Exibir Evento | 1 semana | Felipe| finalizado | - [x] ok?
