@@ -8,7 +8,7 @@
 | Decidir modelagem back-end | 1 semana  | Felipe, Cauã, Giovanna | feito | - [x] ok?
 | Estudar Spring: dois primeiros tutoriais | 1 semana | Cauã, Giovanna | feito | - [x] ok?
 | Criar um backlog completo baseado em requisitos | 1 semana | Todos | feito | - [x] ok?
-| Design de tela: login e registrar | 1 semana | Bruno | em progresso | - [] ok?
+| Design de tela: login e registrar | 1 semana | Bruno | feito | - [x] ok?
 | Design de tela: página do evento selecionado | 1 semana | Pessoa | em pausa | - [] ok?
 | Design de tela: página de registrar evento | 1 semana | Pessoa | em pausa | - [] ok?
 | Criar endpoints baseado nos botões do front-end | 1 semana | Todos | feito | - [x] ok?
