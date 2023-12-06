@@ -16,7 +16,7 @@ public class Ticket {
     private String id;
     @DBRef
     private Evento evento;
-    //@DBRef
-    //private User user;
+    @DBRef
+    private Usuario usuario;
     private Date dataCompra;
 }
