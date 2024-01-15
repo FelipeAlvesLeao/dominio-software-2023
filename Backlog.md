@@ -15,9 +15,9 @@
 | Criar endpoint: Registrar Evento | 1 semana | Felipe| finalizado com erro | - [x] ok?
 | Criar endpoint: Exibir Evento | 1 semana | Felipe| finalizado | - [x] ok?
 | Corrigir erro em que imagem não é salva na database | 1 semana | Felipe | em progresso | - [] ok?
-| Criar endpoint: Atualizar Evento | 1 semana | Felipe| em teste | - [] ok?
-| Criar endpoint: Remover Evento | 1 semana | Felipe, Cauã, Giovanna | em teste | - [] ok?
+| Criar endpoint: Atualizar Evento | 1 semana | Felipe| finalizado | - [x] ok?
+| Criar endpoint: Remover Evento | 1 semana | Felipe, Cauã, Giovanna | finalizado | - [x] ok?
 | Criar endpoint: Usuario | 1 semana | Giovanna | feito | - [x] ok?
 | Criar endpoint: Ticket | 1 semana | Cauã | feito | - [x] ok?
-| Dar como finalizado o design do front no Figma | 2 semanas | Bruno | em andamento | - [x] ok?
+| Dar como finalizado o design do front no Figma | 2 semanas | Bruno | finalizado | - [x] ok?
 | Criar estrutura em esqueleto do Front-end | 1 semana | Pessoa | em pausa | - [] ok?
