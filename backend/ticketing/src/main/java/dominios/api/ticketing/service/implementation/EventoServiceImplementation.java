@@ -48,6 +48,7 @@ public class EventoServiceImplementation implements EventoService {
         eventoUpdate.setDuracao(evento.getDuracao());
         eventoUpdate.setHorario(evento.getHorario());
         eventoUpdate.setTipo(evento.getTipo());
+        eventoUpdate.setOrganizador(evento.getOrganizador());
         eventoRepo.save(eventoUpdate);
         return eventoUpdate;
     }
