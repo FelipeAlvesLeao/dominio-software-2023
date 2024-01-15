@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.page1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 70vh;
+}
+
+.figuraImagem{
+    display: flex;
+    width: 900px;
+    max-width: 100%;
+    min-height: 348px;
+    border-radius: 4px;
+    background: #112557;
+}
+
+.detalhesEvento{
+    margin-top: 20px;
+    display: inline-flex;
+}
+
+.comprarIngresso{
+    align-items: center;
+    justify-content: right;
+    flex-direction: column;
+    margin-left: 380px;
+    padding: 19px 32px 20px 33px;
+
+    border-radius: 8px;
+    border: 1px solid #828282;
+    background: #FFF;
+    /* Card/Hover */
+    box-shadow: 6px 8px 0px 0px #0022BA;
+}
+
+.preco{
+    color: #4F4F4F;
+    font-family: 'Open Sans', sans-serif;;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.botaoComprar{
+    margin-top: 10px;
+    width: 220px;
+    padding: 10px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background: #112557;
+
+    color: #FFF;
+    font-family: 'Open Sans', sans-serif;;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.icon{
+    display: inline-flex;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    color: #112557;
+}
+
+.eventoTexto{
+    margin-top: 10px;
+}
+
+.textoEvento{
+    color: #1B1B25;
+    font-family: 'Open Sans', sans-serif;;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.tituloEvento{
+    color: #1B1B25;
+    font-family: 'Open Sans', sans-serif;;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.descricaoEvento{
+    margin-top: 20px;
+    width: 900px;
+}
+
+.descricao{
+    display: flex;
+}
