@@ -20,4 +20,8 @@
 | Criar endpoint: Usuario | 1 semana | Giovanna | feito | - [x] ok?
 | Criar endpoint: Ticket | 1 semana | Cauã | feito | - [x] ok?
 | Dar como finalizado o design do front no Figma | 2 semanas | Bruno | finalizado | - [x] ok?
-| Criar estrutura em esqueleto do Front-end | 1 semana | Pessoa | em pausa | - [] ok?
+| Criar estrutura em esqueleto do Front-end | 1 semana | Pessoa | em pausa | - [ ] ok?
+| Alterar o "tipo" do evento de string para enum | 1 semana | Cauã, Giovanna | Não Iniciado | - [ ] ok?
+| Adicionar métodos de filtragem de evento (por tipo e por usuário) | 1 semana | Cauã, Giovanna | Não Iniciado | - [ ] ok?
+| Adicionar métodos de filtragem de ticket (por evento e usuário) | 1 semana | Cauã, Giovanna | Não Iniciado | - [ ] ok?
+| Adicionar método de validação de usuário | 1 semana | Cauã, Giovanna | Não Iniciado | - [ ] ok? 
