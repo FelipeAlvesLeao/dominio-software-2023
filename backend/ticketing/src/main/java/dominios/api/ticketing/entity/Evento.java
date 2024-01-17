@@ -23,7 +23,7 @@ public class Evento {
     private Integer capacidade;
     private Integer preco;
     private Integer reservasAtuais = 0;
-    private Binary imagem;
+    private String imagem;
     private String duracao;
     private String horario;
     private String tipo;
