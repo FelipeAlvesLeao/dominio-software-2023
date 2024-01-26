@@ -26,7 +26,7 @@ public class Evento {
     private String imagem;
     private String duracao;
     private String horario;
-    private String tipo;
+    private TipoEvento tipo;
     @DBRef
     private Usuario organizador;
 }

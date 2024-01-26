@@ -1,6 +1,5 @@
 package dominios.api.ticketing.service.implementation;
 
-import dominios.api.ticketing.entity.Evento;
 import dominios.api.ticketing.entity.Ticket;
 import dominios.api.ticketing.repo.TicketRepo;
 import dominios.api.ticketing.service.TicketService;
@@ -22,6 +21,16 @@ public class TicketServiceImplementation implements TicketService{
     @Override
     public Ticket getTicketById(String id) {
         return ticketRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Ticket> getTicketByEvento(String eventoId) {
+        return ticketRepo.findByEventoId(eventoId);
+    }
+
+    @Override
+    public List<Ticket> getTicketByUsuario(String usuarioId) {
+        return ticketRepo.findByUsuarioId(usuarioId);
     }
 
     @Override

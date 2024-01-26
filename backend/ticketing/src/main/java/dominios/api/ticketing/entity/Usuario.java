@@ -17,7 +17,5 @@ public class Usuario {
     private String username;
     private String password;
     private String email;
-    //@DBRef
-    //private List<Ticket> tickets;
     private String tipo;
 }
