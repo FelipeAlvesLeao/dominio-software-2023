@@ -1,6 +1,7 @@
 package dominios.api.ticketing.service.implementation;
 
 import dominios.api.ticketing.entity.Evento;
+import dominios.api.ticketing.entity.TipoEvento;
 import dominios.api.ticketing.repo.EventoRepo;
 import dominios.api.ticketing.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,20 @@ public class EventoServiceImplementation implements EventoService {
         return eventoRepo.findAll();
     }
 
+
     @Override
     public Evento getEventoById(String id) {
         return eventoRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Evento> getEventosByOrganizador(String organizadorId) {
+        return eventoRepo.findByOrganizadorId(organizadorId);
+    }
+
+    @Override
+    public List<Evento> getEventosByTipo(TipoEvento tipo) {
+        return eventoRepo.findByTipo(tipo);
     }
 
     @Override

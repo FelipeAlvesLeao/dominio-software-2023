@@ -33,6 +33,11 @@ public class UsuarioServiceImplementation implements UsuarioService{
         usuarioRepo.delete(usuarioDelete);
         return usuarioDelete;
     }
+    @Override
+    public Usuario getUsuarioByUsernameAndPassword(String username, String password)
+    {
+        return usuarioRepo.findByUsernameAndPassword(username, password);
+    }
 
     @Override
     public Usuario updateUsuario(String id, Usuario usuario) {
