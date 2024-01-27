@@ -9,5 +9,6 @@ public interface UsuarioService {
     public Usuario getUsuarioById(String id);
     public Usuario addUsuario(Usuario usuario);
     public Usuario deleteUsuario(String id);
+    public Usuario getUsuarioByUsernameAndPassword(String username, String password);
     public Usuario updateUsuario(String id, Usuario usuario);
 }

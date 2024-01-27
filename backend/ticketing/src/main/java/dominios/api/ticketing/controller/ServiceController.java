@@ -84,6 +84,10 @@ public class ServiceController {
     public Usuario usuarioGetById(@PathVariable String id) {
         return usuarioService.getUsuarioById(id);
     };
+    @GetMapping("/usuario/{username}/{password}")
+    public Usuario getUsarioByUsernameAndPassword(@PathVariable String username,@PathVariable String password) {
+        return usuarioService.getUsuarioByUsernameAndPassword(username,password);
+    };
     @PostMapping("/usuario/add")
     public Usuario usuarioAdd(Usuario usuario){
         return usuarioService.addUsuario(usuario);
