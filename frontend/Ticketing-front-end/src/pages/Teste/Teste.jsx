@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Header, Footer } from '../../components';
 import { FaLocationDot } from "react-icons/fa6";
 import { FaCalendarAlt } from "react-icons/fa";
-import { useParams } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import "./StyleTeste.css";
 
 export default function Teste() {
@@ -45,7 +45,9 @@ export default function Teste() {
                             <label>Ingressos a partir de</label>
                             <label>R$ {eventoSelecionado.preco}</label>
                         </div>
-                        <button className="buton">Comprar</button>
+                        <Link key={eventoSelecionado.id} to={`/comprar/${eventoSelecionado.id}`}>
+                            <button className="buton">Comprar</button>
+                        </Link>
                     </div>
                 </div>
             </div>

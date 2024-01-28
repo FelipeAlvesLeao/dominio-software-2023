@@ -1,78 +1,74 @@
 import { Header, Footer } from '../../components';
 import "./Style.css"
 import { FaLocationDot } from "react-icons/fa6";
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+
+function shuffleArray(array) {
+    // Função para embaralhar um array utilizando o algoritmo de Fisher-Yates
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 export default function Home() {
+
+    const [eventos, setEventos] = useState([]);
+
+    const objHeaders = {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        }
+    };
+
+    useEffect(() => {
+        fetch('http://localhost:8090/api/evento/all', objHeaders)
+            .then(response => response.json())
+            .then(data => {
+                // Embaralhar a lista de eventos
+                const eventosEmbaralhados = shuffleArray(data);
+                // Pegar os primeiros 4 eventos embaralhados
+                const eventosAleatorios = eventosEmbaralhados.slice(0, 4);
+                setEventos(eventosAleatorios);
+            })
+            .catch(error => {
+                console.error('Erro ao buscar eventos:', error);
+            });
+    }, []);
+
     return (
         <div className="pageH">
             <Header />
             <img src="src/assets/splash.png" className="w-full" alt="Splash" />
-            <h1 className="textoA">Eventos Proximos</h1>
+            <h1 className="textoA">Eventos em Destaque</h1>
             <div className="eventoPro">
-                <div className="evento1">
-                    <div className="flex mx-auto h-full w-full max-w-full"><img src="src/assets/splash.png" alt="Evento 1" /></div>
-                    <div className="descricao">
-                        <div className="texDes">
-                            <div className="ml-4 mes-dia">
-                                <label className="mes">Mês</label>
-                                <label className="mes">Dia</label>
+                {eventos.map((evento) => {
+                    return (
+                        // eslint-disable-next-line react/jsx-key
+                        <Link key={evento.id} to={`/teste/${evento.id}`} className="evento1">
+                            <div className="flex mx-auto h-full w-full max-w-full"><img src="src/assets/splash.png" alt="Imagem do Evento" /></div>
+                            <div className="descricao">
+                                <div className="texDes">
+                                    <div className="mes-dia">
+                                        <label className="mes">{new Intl.DateTimeFormat(
+                                            'pt-BR', {
+                                                dateStyle: 'short',
+                                                timeStyle: 'short'
+                                            }).format(evento.data)}</label>
+                                    </div>
+                                    <label className="nome">{evento.nome}</label>
+                                    <label className="preco">R$ {evento.preco}</label>
+                                    <div className="location">
+                                        <FaLocationDot className="" /><label className="ml-1 preco">{evento.endereco}</label>
+                                    </div>
+                                </div>
                             </div>
-                            <label className="ml-16 nome">Nome Evento</label>
-                            <label className="ml-4 preco">Preço</label>
-                            <div className="location">
-                                <FaLocationDot className="ml-12" /><label className="ml-1 preco">Local</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="evento1">
-                    <div className="flex mx-auto h-full w-full max-w-full"><img src="src/assets/splash.png" alt="Evento 2"/></div>
-                    <div className="descricao">
-                        <div className="texDes">
-                            <div className="ml-4 mes-dia">
-                                <label className="mes">Mês</label>
-                                <label className="mes">Dia</label>
-                            </div>
-                            <label className="ml-16 nome">Nome Evento</label>
-                            <label className="ml-4 preco">Preço</label>
-                            <div className="location">
-                                <FaLocationDot className="ml-12"/><label className="ml-1 preco">Local</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="evento1">
-                    <div className="flex mx-auto h-full w-full max-w-full"><img src="src/assets/splash.png" alt="Evento 3"/></div>
-                    <div className="descricao">
-                        <div className="texDes">
-                            <div className="ml-4 mes-dia">
-                                <label className="mes">Mês</label>
-                                <label className="mes">Dia</label>
-                            </div>
-                            <label className="ml-16 nome">Nome Evento</label>
-                            <label className="ml-4 preco">Preço</label>
-                            <div className="location">
-                                <FaLocationDot className="ml-12"/><label className="ml-1 preco">Local</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="evento1">
-                    <div className="flex mx-auto h-full w-full max-w-full"><img src="src/assets/splash.png" alt="Evento 4"/></div>
-                    <div className="descricao">
-                        <div className="texDes">
-                            <div className="ml-4 mes-dia">
-                                <label className="mes">Mês</label>
-                                <label className="mes">Dia</label>
-                            </div>
-                            <label className="ml-16 nome">Nome Evento</label>
-                            <label className="ml-4 preco">Preço</label>
-                            <div className="location">
-                                <FaLocationDot className="ml-12"/><label className="ml-1 preco">Local</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </Link>
+                    )
+                })}
             </div>
             <Footer/>
         </div>

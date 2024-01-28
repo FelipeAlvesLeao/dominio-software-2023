@@ -2,11 +2,33 @@ import "./Style.css"
 import { Header, Footer} from '../../components';
 import { FaLocationDot } from "react-icons/fa6";
 import { FaCalendarAlt } from "react-icons/fa";
-import React, { useState } from "react";
+import { useParams } from 'react-router-dom';
+import {useEffect, useState} from "react";
 
 export default function ComprarIngresso() {
 
-    const [isPopupVisible, setPopupVisible] = useState(false);
+    {/*Dados do evento*/}
+    const { id } = useParams();
+    const [eventoSelecionado, setEventoSelecionado] = useState(null);
+
+
+    useEffect(() => {
+        fetch(`http://localhost:8090/api/evento/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                setEventoSelecionado(data);
+            })
+            .catch(error => {
+                console.error(`Erro ao buscar evento com ID ${id}:`, error);
+            });
+    }, [id]);
+
+    if (!eventoSelecionado) {
+        return <p>Carregando...</p>; // ou qualquer indicador de carregamento que você preferir
+    }
+    {/*Fim dados do Evento*/}
+
+    /*const [isPopupVisible, setPopupVisible] = useState(false);
 
     const exibirPopup = () => {
         setPopupVisible(true);
@@ -14,7 +36,7 @@ export default function ComprarIngresso() {
 
     const fecharPopup = () => {
         setPopupVisible(false);
-    };
+    };*/
 
     function mascaraCartaoCredito(e) {
         var i = e.target;
@@ -98,19 +120,19 @@ export default function ComprarIngresso() {
                             <img src="src/assets/splash.png" className="mx-auto h-full w-full max-w-full" alt="Imagem do Evento"/>
                         </div>
                         <div className="textoC ml-4">
-                            <label className="ml-2">Titulo do Evento</label>
-                            <h1><FaLocationDot className="icon mr-2" />Endereço Evento</h1>
+                            <label className="ml-2">{eventoSelecionado.nome}</label>
+                            <h1><FaLocationDot className="icon mr-2" />{eventoSelecionado.endereco}</h1>
                             <h1><FaCalendarAlt className="icon mr-2" />Data Evento</h1>
                         </div>
                     </div>
                     <div className="valor">
                         <h2>Preço do Ingresso</h2>
-                        <h3>R$ 00,00</h3>
+                        <h3>R$ {eventoSelecionado.preco}</h3>
                     </div>
-                    <button className="botaoF" onClick={exibirPopup}>Finalizar Compra</button>
+                    <button className="botaoF" /*onClick={exibirPopup}*/>Finalizar Compra</button>
                 </div>
             </div>
-            {isPopupVisible && (
+            {/*isPopupVisible && (
                 <div className="popup">
                     <div className="popup-content">
             <span className="close" onClick={fecharPopup}>
@@ -119,7 +141,7 @@ export default function ComprarIngresso() {
                         <p>Preencha todos os campos!</p>
                     </div>
                 </div>
-            )}
+            )*/}
             <Footer />
         </div>
     )

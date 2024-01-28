@@ -1,6 +1,4 @@
-import React from "react";
 import "./styleReg.css";
-import {AddLink} from "@mui/icons-material";
 import {Link} from "react-router-dom";
 
 export default function Register() {
