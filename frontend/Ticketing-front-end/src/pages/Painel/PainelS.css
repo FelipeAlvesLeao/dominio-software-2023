@@ -1,0 +1,45 @@
+.PainelP {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.bodyP {
+    margin: 8%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.CadastrarEvento {
+    flex: 1; /* Ocupa todo o espaço disponível */
+    max-width: 513px;
+    height: 334px;
+    border-radius: 20px;
+    border: 2px solid #01136b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Centraliza o texto se houver */
+    flex-direction: column;
+}
+
+.CadastrarEvento h1 {
+    font-size: 18em; /* Ajuste o tamanho da fonte conforme necessário */
+    color: #112557;
+}
+
+.CadastrarEvento h1:hover{
+    font-size: 16em;
+    color: rgba(0, 0, 0, 0.99);
+}
+
+.CadastrarEvento h2{
+    color: #0a223b;
+    font-family: "Open Sans";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 160%; /* 51.2px */
+}

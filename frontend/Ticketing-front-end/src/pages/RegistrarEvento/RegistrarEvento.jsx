@@ -1,112 +1,114 @@
-import { useState } from "react"
+import { Header, Footer } from '../../components';
+import { useState } from 'react'
+import "./RegStyle.css";
+
 export default function RegistrarEvento() {
 
-    const [image, setImage] = useState('')
-    function handleImage(e) {
-        setImage(e.target.files[0])
-    }
+    const Form = () => {
+        const [formData, setFormData] = useState({
+            nome: '',
+            descricao: "",
+            endereco: '',
+            dataInicial: '',
+            dataFinal: '',
+            horario: '',
+            capacidade: '',
+            preco: '',
+            tipo: 'Show',
 
-    return(
-        <>
-    <div class="w-full max-w-lg flex flex-row">
-     <form className="esquerda" class="flex flex-col rounded-lg border-2 my-5" encType="multipart/form-data">
-     <div class="py-5 px-5">
-      <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-nome">
-        Nome do Evento
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-nome" type="text" placeholder="Ex: UFG Fest"/>
-    </div>
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-tipo">
-        Tipo de Evento
-      </label>
-      <div class="relative">
-        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-tipo">
-          <option>Musical</option>
-          <option>Palestra</option>
-          <option>Hipertexto</option>
-          <option>Feira</option>
-          <option>Mostra</option>
-          <option>Outros</option>
-        </select>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-        </div>
-      </div>
-    </div>
+        });
 
-  </div>
-  <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-data-inicio">
-        Data de Início
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-data-inicio" type="date"/>
-    </div>
-    <div class="w-full md:w-1/3 px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-data-fim">
-        Data de Fim
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-data-fim" type="date"/>
-    </div>
-    <div class="w-full md:w-1/3 px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-hora-inicio">
-        Horário de Início
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-hora-inicio" type="time"/>
-    </div>
-    <div class="w-full md:w-1/3 px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-hora-fim">
-        Horário de Fim
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-hora-fim" type="time"/>
-    </div>
-    <div class="w-full md:w-1/3 px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-lotacao">
-        Lotação Máxima
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-lotacao" type="text"/>
-    </div>
-    <div class="w-full md:w-1/3 px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-preco">
-        Preço
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-preco" type="text"/>
-    </div>
-  </div>
-  </div>
-  <div class="w-full px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-endereco">
-        Endereço do Evento
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-endereco" type="text" placeholder="Ex: Centro de Eventos UFG"/>
-    </div>
-    <div class="w-full px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-imagem">
-        Imagem do Evento
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-imagem" type="file" onChange={handleImage}/>
-    </div>
+        const handleFormSubmit = async (event) => {
+            event.preventDefault();
 
-  </form>
-            <div className="direita" class="flex flex-col">
-                <h3>Preview</h3>
-                <div className="preview">
-                    <img></img>
-                    <div>
-                        <div>Data</div>
-                        <div>
-                            <div>Titulo</div>
-                            <div>Preço</div>
-                            <div>Local</div>
-                        </div>
-                    </div>
+            try {
+                console.log(JSON.stringify(formData))
+                const response = await fetch('http://localhost:8090/api/evento/add', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+                console.log(response);
+
+                if (response.ok) {
+                    console.log('Evento cadastrado com sucesso!');
+
+                } else {
+                    console.error('Falha ao cadastrar o evento. Status:', response.status);
+                }
+            } catch (error) {
+                console.error('Erro durante a requisição:', error);
+            }
+        };
+
+
+  return (
+      <div className="pagR">
+          <Header />
+          <div className="pag01">
+              <div className="pag02">
+                  <div className="pag03">
+                      <form encType="multipart/form-data" onSubmit={handleFormSubmit}>
+                          <label>Informações do Evento</label>
+                          <div className="pag04">
+                              <div className="t05">
+                                  <h1>Nome do Evento</h1>
+                                  <input onChange={(e) => setFormData({...formData, nome: e.target.value})} value={formData.nome} className="w-96 mr-16" type="text"/>
+                              </div>
+                              <div className="t05">
+                                  <h1 className="mr-16">Tipo do Evento</h1>
+                                  <select onChange={(e) => setFormData({...formData, tipo: e.target.value})} value={formData.tipo} className="w-32" required>
+                                      <option>Show</option>
+                                      <option>Palestra</option>
+                                      <option>Filme</option>
+                                      <option>Seminário</option>
+                                  </select>
+                              </div>
+                              <div className="t05">
+                                  <h1 className="mr-16">Data Evento</h1>
+                                  <input onChange={(e) => setFormData({...formData, dataInicial: e.target.value})} value={formData.dataInicial} className="w-32 text-center" type="date"/>
+                              </div>
+                              <div className="t05">
+                                  <h1 className="mr-16">Hora do Evento</h1>
+                                  <input onChange={(e) => setFormData({...formData, horario: e.target.value})} value={formData.horario} className="w-24 text-center" type="time"/>
+                              </div>
+                              <div className="t05">
+                                  <h1 className="mr-16">Capacidade</h1>
+                                  <input onChange={(e) => setFormData({...formData, capacidade: e.target.value})} value={formData.capacidade} className="w-24" type="number"/>
+                              </div>
+                              <div className="t05">
+                                  <h1 className="mr-16">Preço</h1>
+                                  <input onChange={(e) => setFormData({...formData, preco: e.target.value})} value={formData.preco} className="w-24" type="number"/>
+                              </div>
+                              <div className="t05">
+                                  <h1 className="mr-80">Endereço do Evento</h1>
+                                  <input onChange={(e) => setFormData({...formData, endereco: e.target.value})} value={formData.endereco} className="w-96" type="text"/>
+                              </div>
+                              <div className="t05">
+                                  <h1 className="mr-80">Descrição do Evento</h1>
+                                  <input onChange={(e) => setFormData({...formData, descricao: e.target.value})} value={formData.descricao} className="w-96" type="text"/>
+                              </div>
+                              {/*<div className="mt-10">
+                                <h1>Adicione uma imagem</h1>
+                                <input type="file" onChange={handleFileChange} accept="image/*"/>
+                            </div>*/}
+                          </div>
+                          <div className="bt01">
+                              <button type="submit"
+                                      className="w-48 h-12 bg-green-500 text-white font-semibold rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-300">
+                                  Registrar Evento
+                              </button>
+                          </div>
+                    </form>
                 </div>
-                <button>Salvar e Publicar</button>
             </div>
         </div>
-        </>
-    )
+        <Footer/>
+    </div>
+  )
+}
+    return <Form />;
 }

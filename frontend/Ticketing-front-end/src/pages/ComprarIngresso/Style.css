@@ -1,0 +1,204 @@
+.PageCompra {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.MaiorR {
+    display: inline-flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+.DadosdaCompra {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: inline-flex;
+    width: 640px;
+    max-height: 300px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.DadosdaCompra h1{
+    color: #1B1B25;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.DadosdaCompra label {
+    color: #000;
+    font-family: "Open Sans";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.DadosdaCompra input {
+    border-radius: 5px;
+    border: 2px solid #1B1B25;
+    background: #FFF;
+    height: 30px;
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 10px; /* Adicionei margem inferior para separar os campos */
+}
+
+.DT input{
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #1B1B25;
+    background: #FFF;
+    height: 30px;
+    width: 150px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.CVV input{
+    border-radius: 5px;
+    border: 2px solid #1B1B25;
+    background: #FFF;
+    height: 30px;
+    width: 50px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.DetalhesdaCompra{
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    max-height: 400px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.DetalhesdaCompra label{
+    color: #000;
+    font-family: "Open Sans";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.infoCompra{
+    margin-top: 10px;
+    display: inline-flex;
+}
+
+.imgC{
+    display: flex;
+    width: 226px;
+    height: 98px;
+    border-radius: 1.292px;
+    border: 0.484px solid #060609;
+}
+
+.textoC{
+    display: flex;
+    flex-direction: column;
+}
+
+.textoC label{
+    color: #000;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.textoC h1{
+    color: #1B1B25;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
+
+.valor{
+    margin-top: 15px;
+    display: inline-flex;
+}
+
+.valor h2{
+    color: #000;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.valor h3{
+    margin-left: 50px;
+    color: #000;
+    text-align: right;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.botaoF{
+    margin-top: 100px;
+    width: 342.54px;
+    height: 67.5px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #112557;
+
+    color: #FFF;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+/* Adicione no arquivo Style.css */
+.popup {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(16, 32, 150);
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 1;
+}
+
+.popup-content {
+    text-align: center;
+    color: #0a223b;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.close {
+    color: rgba(212,0,5,0.84);
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+

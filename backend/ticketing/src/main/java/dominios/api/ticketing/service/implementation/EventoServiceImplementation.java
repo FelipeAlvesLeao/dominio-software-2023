@@ -6,6 +6,7 @@ import dominios.api.ticketing.repo.EventoRepo;
 import dominios.api.ticketing.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 @Service
@@ -34,7 +35,10 @@ public class EventoServiceImplementation implements EventoService {
     }
 
     @Override
-    public Evento addEvento(Evento evento) {
+    public Evento addEvento( Evento evento) {
+        /*System.out.println("Recebendo solicitação para adicionar evento: " + evento);
+        System.out.println("Nome: " + evento.getNome());
+        System.out.println("Descrição: " + evento.getDescricao());*/
         return eventoRepo.save(evento);
     }
 
