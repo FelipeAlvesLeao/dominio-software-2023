@@ -4,6 +4,23 @@
     overflow: hidden;
 }
 
+.restrito{
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.restrito h2{
+    color: #000000;
+    font-family: "Open Sans";
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 160%; /* 51.2px */
+}
+
 .bodyP {
     margin: 8%;
     display: flex;

@@ -36,6 +36,7 @@ public class EventoServiceImplementation implements EventoService {
 
     @Override
     public Evento addEvento(Evento evento) {
+        System.out.println("Recebendo solicitação para adicionar evento: " + evento);
         return eventoRepo.save(evento);
     }
 

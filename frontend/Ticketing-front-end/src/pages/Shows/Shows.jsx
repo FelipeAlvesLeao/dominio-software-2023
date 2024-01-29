@@ -39,16 +39,17 @@ export default function Shows() {
                         <div className="descricao">
                             <div className="texDes">
                                 <div className="mes-dia">
-                                    <label className="mes">{new Intl.DateTimeFormat(
-                                        'pt-BR', {
-                                            dateStyle: 'short',
-                                            timeStyle: 'short'
-                                        }).format(evento.data)}</label>
+                                    <label className="mes"> {new Date(evento.dataInicial).toLocaleDateString('pt-BR', {
+                                        day: 'numeric',
+                                        month: 'numeric',
+                                        year: 'numeric',
+                                    })}</label>
+                                    <label className="mes"> {evento.horario}</label>
                                 </div>
                                 <label className="nome">{evento.nome}</label>
                                 <label className="preco">R$ {evento.preco}</label>
                                 <div className="location">
-                                    <FaLocationDot className="" /><label className="ml-1 preco">{evento.endereco}</label>
+                                    <FaLocationDot className=""/><label className="ml-1 preco">{evento.endereco}</label>
                                 </div>
                             </div>
                         </div>

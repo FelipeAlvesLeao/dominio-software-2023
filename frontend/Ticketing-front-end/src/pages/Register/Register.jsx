@@ -1,44 +1,103 @@
 import "./styleReg.css";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import { useState } from "react";
 
 export default function Register() {
+    const Form = () => {
+        const [formData, setFormData] = useState({
+            username: "",
+            password: "",
+            email: "",
+        });
 
-    function mascara(e) {
-        var i = e.target;
-        var v = i.value;
+        const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
-        if (isNaN(v[v.length - 1])) {
-            // Impede entrar outro caractere que não seja número
-            i.value = v.substring(0, v.length - 1);
-            return;
+        const navigate = useNavigate();
+
+        const handleFormSubmit = async (e) => {
+            e.preventDefault(); // Adicione esta linha para prevenir o comportamento padrão do formulário
+
+            if (Object.values(formData).some((value) => value === '')) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            console.log(formData);
+
+            var formdata = new FormData();
+            formdata.append("username", formData.username);
+            formdata.append("password", formData.password);
+            formdata.append("email", formData.email);
+
+            var requestOptions = {
+                method: "POST",
+                body: formdata,
+                redirect: "follow",
+            };
+
+            fetch("http://localhost:8090/api/usuario/add", requestOptions)
+                .then((response) => response.text())
+                .then((result) => console.log(result))
+                .catch((error) => console.log("error", error));
+
+            setRegistrationSuccess(true);
+        };
+
+        if (registrationSuccess) {
+            navigate("/login");
         }
 
-        i.setAttribute("maxLength", "14");
-        if (v.length === 3 || v.length === 7) i.value += ".";
-        if (v.length === 11) i.value += "-";
-    }
-
-    return (
-        <div className="page">
-            <div className="LoginR">
-                <form className="formularioLoginR">
-                    <div className="logoLoginR">
-                        <Link to="/"><img src="src/assets/logo.png" alt="Logo"/></Link>
-                    </div>
-                    <div className="detaLoginR">
-                        <h1>Digite seu Nome</h1>
-                        <input type="text" placeholder="Digite seu Nome"/>
-                        <h1>Digite seu CPF</h1>
-                        <input onInput={mascara} type="text" placeholder="Digite seu CPF"/>
-                        <h1>Digite seu E-mail</h1>
-                        <input type="email" placeholder="Digite seu E-mail"/>
-                        <h1>Digite sua Senha</h1>
-                        <input type="password" placeholder="Digite sua senha!"/>
-                        <button className="botaoLogin">Registrar</button>
-                        <Link to="/login"><a className="textoR">Já possui conta? Faça Login!</a></Link>
-                    </div>
-                </form>
+        return (
+            <div className="page">
+                <div className="LoginR">
+                    <form
+                        onSubmit={handleFormSubmit} // Adicione esta linha para associar a função ao evento onSubmit do formulário
+                        className="formularioLoginR"
+                    >
+                        <div className="logoLoginR">
+                            <Link to="/">
+                                <img src="src/assets/logo.png" alt="Logo" />
+                            </Link>
+                        </div>
+                        <div className="detaLoginR">
+                            <h1>Digite seu usuário</h1>
+                            <input
+                                onChange={(e) =>
+                                    setFormData({ ...formData, username: e.target.value })
+                                }
+                                value={formData.username}
+                                type="text"
+                                placeholder="Digite seu usuario"
+                            />
+                            <h1>Digite seu E-mail</h1>
+                            <input
+                                onChange={(e) =>
+                                    setFormData({ ...formData, email: e.target.value })
+                                }
+                                value={formData.email}
+                                type="email"
+                                placeholder="Digite seu E-mail"
+                            />
+                            <h1>Digite sua Senha</h1>
+                            <input
+                                onChange={(e) =>
+                                    setFormData({ ...formData, password: e.target.value })
+                                }
+                                value={formData.password}
+                                type="password"
+                                placeholder="Digite sua senha!"
+                            />
+                            <button type="submit" className="bg-white text-[rgba(10, 34, 59, 0.66)] text-base px-10 py-2 border border-transparent rounded-md font-semibold uppercase mt-10 cursor-pointer shadow-md hover:shadow-lg focus:outline-none focus:ring focus:border-blue-300">
+                                Registrar
+                            </button>
+                            <Link to="/login">
+                                <h3 className="textoR">Já possui conta? Faça Login!</h3>
+                            </Link>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
+
+    return <Form />;
 }

@@ -2,15 +2,28 @@ import "./Style.css"
 import { Header, Footer} from '../../components';
 import { FaLocationDot } from "react-icons/fa6";
 import { FaCalendarAlt } from "react-icons/fa";
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
+import { useAuth } from '../../AuthContext.jsx';
 import {useEffect, useState} from "react";
 
 export default function ComprarIngresso() {
+
+    const { userId } = useAuth();
+    const navigate = useNavigate();
+
+    if(!userId){
+        navigate('/login');
+    }
 
     {/*Dados do evento*/}
     const { id } = useParams();
     const [eventoSelecionado, setEventoSelecionado] = useState(null);
 
+    const [numeroCartao, setNumeroCartao] = useState("");
+    const [nomeCartao, setNomeCartao] = useState("");
+    const [cpfDonoCartao, setCpfDonoCartao] = useState("");
+    const [dataNascimento, setDataNascimento] = useState("");
+    const [cvv, setCvv] = useState("");
 
     useEffect(() => {
         fetch(`http://localhost:8090/api/evento/${id}`)
@@ -28,15 +41,6 @@ export default function ComprarIngresso() {
     }
     {/*Fim dados do Evento*/}
 
-    /*const [isPopupVisible, setPopupVisible] = useState(false);
-
-    const exibirPopup = () => {
-        setPopupVisible(true);
-    };
-
-    const fecharPopup = () => {
-        setPopupVisible(false);
-    };*/
 
     function mascaraCartaoCredito(e) {
         var i = e.target;
@@ -80,7 +84,46 @@ export default function ComprarIngresso() {
         i.setAttribute("maxLength", "3"); // CVV possui 3 dígitos
     }
 
+    const formatarDataAtual = () => {
+        const dataAtual = new Date();
+        return dataAtual.toDateString() + ' ' + dataAtual.toLocaleTimeString('en-US', { timeZone: 'America/Sao_Paulo' });
+    };
 
+    const finalizarCompra = async () => {
+
+        if (!numeroCartao || !nomeCartao || !cpfDonoCartao || !dataNascimento || !cvv) {
+            alert("Por favor, preencha todos os campos antes de finalizar a compra.");
+            return;
+        }
+
+        var formdata = new FormData();
+        formdata.append("evento", eventoSelecionado.id);
+        formdata.append("usuario", userId.toString());
+        formdata.append("dataCompra", formatarDataAtual());
+
+        var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        try {
+            const response = await fetch("http://localhost:8090/api/ticket/add", requestOptions);
+            const result = await response.text();
+
+            // Se a compra foi bem-sucedida, redireciona para a página /perfil
+            if (response.ok) {
+                console.log(result); // Pode querer fazer algo com o resultado aqui
+                navigate('/perfil');
+            } else {
+                console.error('Erro ao finalizar a compra:', result);
+                // Pode querer exibir uma mensagem de erro ao usuário aqui
+            }
+        } catch (error) {
+            console.error('Erro ao finalizar a compra:', error);
+            // Pode querer exibir uma mensagem de erro ao usuário aqui
+        }
+    };
 
     return (
         <div className="PageCompra">
@@ -92,23 +135,36 @@ export default function ComprarIngresso() {
                     </div>
                     <div>
                         <h1>Número do Cartão</h1>
-                        <input onInput={mascaraCartaoCredito} type="text" placeholder="Digite o número do Cartão" />
+                        <input onInput={(e) => {
+                            mascaraCartaoCredito(e);
+                            setNumeroCartao(e.target.value);
+                        }} type="text" placeholder="Digite o número do Cartão"/>
                     </div>
                     <div>
                         <h1>Nome no Cartão</h1>
-                        <input type="text" placeholder="Digite o nome no cartão" />
+                        <input onInput={(e) => {
+                            setNomeCartao(e.target.value);
+                        }} type="text" placeholder="Digite o nome no cartão"/>
                     </div>
                     <div>
                         <h1>Digite o CPF do Dono do Cartão</h1>
-                        <input onInput={mascara} type="text" placeholder="Digite o CPF" />
+                        <input onInput={(e) => {
+                            mascara(e);
+                            setCpfDonoCartao(e.target.value);
+                        }} type="text" placeholder="Digite o CPF"/>
                     </div>
                     <div className="DT mr-32">
                         <h1>Data de Nascimento</h1>
-                        <input type="date" />
+                        <input onInput={(e) => {
+                            setDataNascimento(e.target.value);
+                        }} type="date"/>
                     </div>
                     <div className="CVV">
                         <h1>CVV</h1>
-                        <input onInput={mascaraCVV} type="text" />
+                        <input onInput={(e) => {
+                            mascaraCVV(e);
+                            setCvv(e.target.value);
+                        }} type="text"/>
                     </div>
                 </div>
                 <div className="DetalhesdaCompra">
@@ -117,31 +173,26 @@ export default function ComprarIngresso() {
                     </div>
                     <div className="infoCompra">
                         <div className="imgC">
-                            <img src="src/assets/splash.png" className="mx-auto h-full w-full max-w-full" alt="Imagem do Evento"/>
+                            <img src="src/assets/splash.png" className="mx-auto h-full w-full max-w-full"
+                                 alt="Imagem do Evento"/>
                         </div>
                         <div className="textoC ml-4">
                             <label className="ml-2">{eventoSelecionado.nome}</label>
-                            <h1><FaLocationDot className="icon mr-2" />{eventoSelecionado.endereco}</h1>
-                            <h1><FaCalendarAlt className="icon mr-2" />Data Evento</h1>
+                            <h1><FaLocationDot className="icon mr-2"/>{eventoSelecionado.endereco}</h1>
+                            <h1><FaCalendarAlt className="icon mr-2"/>{new Date(eventoSelecionado.dataInicial).toLocaleDateString('pt-BR', {
+                                day: 'numeric',
+                                month: 'numeric',
+                                year: 'numeric',
+                            })}{" - "}{eventoSelecionado.horario}</h1>
                         </div>
                     </div>
                     <div className="valor">
                         <h2>Preço do Ingresso</h2>
                         <h3>R$ {eventoSelecionado.preco}</h3>
                     </div>
-                    <button className="botaoF" /*onClick={exibirPopup}*/>Finalizar Compra</button>
+                    <button className="botaoF" onClick={finalizarCompra}>Finalizar Compra</button>
                 </div>
             </div>
-            {/*isPopupVisible && (
-                <div className="popup">
-                    <div className="popup-content">
-            <span className="close" onClick={fecharPopup}>
-              &times;
-            </span>
-                        <p>Preencha todos os campos!</p>
-                    </div>
-                </div>
-            )*/}
             <Footer />
         </div>
     )

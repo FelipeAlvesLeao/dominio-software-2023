@@ -20,7 +20,6 @@ public class CorsFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("Filtro CORS ativado.");
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpServletRequest request= (HttpServletRequest) servletRequest;
 
@@ -31,9 +30,6 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setHeader("Access-Control-Max-Age", "180");
 
-        // Informações sobre a solicitação
-        /*System.out.println("Método: " + request.getMethod());
-        System.out.println("Origem: " + request.getHeader("Origin"));*/
 
         filterChain.doFilter(servletRequest, servletResponse);
     }
