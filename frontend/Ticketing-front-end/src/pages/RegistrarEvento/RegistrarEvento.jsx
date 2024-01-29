@@ -30,10 +30,18 @@ export default function RegistrarEvento() {
             horario: '',
             capacidade: '',
             preco: '',
-            tipo: 'Show'
+            tipo: 'Show',
+            imagem: null,
 
         });
 
+        const handleFileChange = (e) => {
+            const file = e.target.files[0];
+            setFormData({
+                ...formData,
+                imagem: file,
+            });
+        };
 
         const handleFormSubmit = async (e) => {
             e.preventDefault();
@@ -60,6 +68,11 @@ export default function RegistrarEvento() {
             formdata.append("horario", formattedTime);
             formdata.append("organizador", userId.toString());
 
+            if (formData.imagem) {
+                const base64Image = await convertImageToBase64(formData.imagem);
+                formdata.append('imagem', base64Image);
+            }
+
             var requestOptions = {
                 method: 'POST',
                 body: formdata,
@@ -83,6 +96,14 @@ export default function RegistrarEvento() {
             }
         };
 
+        const convertImageToBase64 = (image) => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = reject;
+                reader.readAsDataURL(image);
+            });
+        };
 
         return (
             <div className="pagR">
@@ -103,7 +124,7 @@ export default function RegistrarEvento() {
                                             <option>Show</option>
                                             <option>Palestra</option>
                                             <option>Filme</option>
-                                            <option>Seminário</option>
+                                            <option>Seminario</option>
                                         </select>
                                     </div>
                                     <div className="t05">
@@ -130,10 +151,10 @@ export default function RegistrarEvento() {
                                         <h1 className="mr-80">Descrição do Evento</h1>
                                         <input onChange={(e) => setFormData({...formData, descricao: e.target.value})} value={formData.descricao} className="w-96" type="text"/>
                                     </div>
-                                    {/*<div className="mt-10">
+                                    /<div className="mt-10">
                                 <h1>Adicione uma imagem</h1>
                                 <input type="file" onChange={handleFileChange} accept="image/*"/>
-                            </div>*/}
+                            </div>
                                 </div>
                                 <div className="bt01">
                                     <button type="submit"

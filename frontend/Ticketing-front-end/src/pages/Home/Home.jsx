@@ -3,53 +3,59 @@ import "./Style.css"
 import { FaLocationDot } from "react-icons/fa6";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-
-function shuffleArray(array) {
-    // Função para embaralhar um array utilizando o algoritmo de Fisher-Yates
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
+import placehold from "../../assets/splash.png"
 
 export default function Home() {
 
     const [eventos, setEventos] = useState([]);
 
-    const objHeaders = {
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        }
-    };
 
     useEffect(() => {
-        fetch('http://localhost:8090/api/evento/all', objHeaders)
+        fetch('http://localhost:8090/api/evento/all')
             .then(response => response.json())
             .then(data => {
-                // Embaralhar a lista de eventos
-                const eventosEmbaralhados = shuffleArray(data);
-                // Pegar os primeiros 4 eventos embaralhados
-                const eventosAleatorios = eventosEmbaralhados.slice(0, 4);
-                setEventos(eventosAleatorios);
+                // Filtrar apenas os eventos futuros
+                const eventosFuturos = data.filter(evento => new Date(evento.dataInicial) > new Date());
+
+                // Ordenar os eventos futuros com base na data de início
+                const eventosOrdenados = eventosFuturos.sort((a, b) => new Date(a.dataInicial) - new Date(b.dataInicial));
+
+                // Pegar os primeiros 4 eventos ordenados
+                const eventosProximos = eventosOrdenados.slice(0, 4);
+
+                setEventos(eventosProximos);
             })
             .catch(error => {
                 console.error('Erro ao buscar eventos:', error);
             });
     }, []);
 
+    const decodeBase64Image = (base64String) => {
+        const binaryString = window.atob(base64String);
+        const byteArray = new Uint8Array(binaryString.length);
+
+        for (let i = 0; i < binaryString.length; i++) {
+            byteArray[i] = binaryString.charCodeAt(i);
+        }
+
+        return new Blob([byteArray], { type: 'image/png' });
+    };
+
     return (
         <div className="pageH">
             <Header />
             <img src="src/assets/splash.png" className="w-full" alt="Splash" />
-            <h1 className="textoA">Eventos em Destaque</h1>
+            <h1 className="textoA">Eventos Próximos</h1>
             <div className="eventoPro">
                 {eventos.map((evento) => {
+                    const imagemSrc = evento.imagem
+                        ? URL.createObjectURL(decodeBase64Image(evento.imagem))
+                        : placehold;
+
                     return (
                         // eslint-disable-next-line react/jsx-key
                         <Link key={evento.id} to={`/teste/${evento.id}`} className="evento1">
-                            <div className="flex mx-auto h-full w-full max-w-full"><img src="src/assets/splash.png" alt="Imagem do Evento" /></div>
+                            <div className="flex mx-auto h-full w-full max-w-full"><img src={imagemSrc} alt="Imagem do Evento" /></div>
                             <div className="descricao">
                                 <div className="texDes">
                                     <div className="mes-dia">

@@ -14,7 +14,7 @@ export default function Register() {
 
         const navigate = useNavigate();
 
-        const handleFormSubmit = async (e) => {
+        const registrarUser = async (e) => {
             e.preventDefault(); // Adicione esta linha para prevenir o comportamento padrão do formulário
 
             if (Object.values(formData).some((value) => value === '')) {
@@ -23,14 +23,14 @@ export default function Register() {
             }
             console.log(formData);
 
-            var formdata = new FormData();
-            formdata.append("username", formData.username);
-            formdata.append("password", formData.password);
-            formdata.append("email", formData.email);
+            var userdata = new FormData();
+            userdata.append("username", formData.username);
+            userdata.append("password", formData.password);
+            userdata.append("email", formData.email);
 
             var requestOptions = {
                 method: "POST",
-                body: formdata,
+                body: userdata,
                 redirect: "follow",
             };
 
@@ -50,7 +50,7 @@ export default function Register() {
             <div className="page">
                 <div className="LoginR">
                     <form
-                        onSubmit={handleFormSubmit} // Adicione esta linha para associar a função ao evento onSubmit do formulário
+                        onSubmit={registrarUser}
                         className="formularioLoginR"
                     >
                         <div className="logoLoginR">

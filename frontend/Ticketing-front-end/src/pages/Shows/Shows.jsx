@@ -2,21 +2,16 @@ import { Header, Footer } from '../../components';
 import { FaLocationDot } from "react-icons/fa6";
 import {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
+import placehold from "../../assets/splash.png";
 
 
 export default function Shows() {
 
     const [eventos, setEventos] = useState([]);
 
-    const objHeaders = {
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        }
-    };
 
     useEffect(() => {
-        fetch('http://localhost:8090/api/evento/all', objHeaders)
+        fetch('http://localhost:8090/api/evento/all')
             .then(response => response.json())
             .then(data => {
                 setEventos(data);
@@ -26,16 +21,36 @@ export default function Shows() {
             });
     }, []);
 
+    const decodeBase64Image = (base64String) => {
+        const binaryString = window.atob(base64String);
+        const byteArray = new Uint8Array(binaryString.length);
+
+        for (let i = 0; i < binaryString.length; i++) {
+            byteArray[i] = binaryString.charCodeAt(i);
+        }
+
+        return new Blob([byteArray], { type: 'image/png' });
+    };
+
     return (
         <div className="ShowsPage">
             <Header/>
             <div className="h-full w-full">
                 <div className="eventoPro flex-wrap ">
                     {eventos.map((evento) => {
-                        return (
-                            // eslint-disable-next-line react/jsx-key
+
+                        if (!evento.nome || evento.nome.trim() === "") {
+                            return null; // Ignora eventos com nome vazio
+                        }
+
+                        const imagemSrc = evento.imagem
+                            ? URL.createObjectURL(decodeBase64Image(evento.imagem))
+                            : placehold;
+
+                        return(
+                        // eslint-disable-next-line react/jsx-key
                     <Link key={evento.id} to={`/teste/${evento.id}`} className="evento1">
-                        <div className="flex mx-auto h-full w-full max-w-full"><img src="src/assets/splash.png" alt="Imagem do Evento" /></div>
+                        <div className="flex mx-auto h-full w-full max-w-full"><img src={imagemSrc} alt="Imagem do Evento" /></div>
                         <div className="descricao">
                             <div className="texDes">
                                 <div className="mes-dia">

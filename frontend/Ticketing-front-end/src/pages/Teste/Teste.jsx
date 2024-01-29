@@ -4,7 +4,19 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaCalendarAlt } from "react-icons/fa";
 import { Link, useParams } from 'react-router-dom';
 import { useAuth } from '../../AuthContext.jsx';
+import placehold from "../../assets/splash.png"
 import "./StyleTeste.css";
+
+const decodeBase64Image = (base64String) => {
+    const binaryString = window.atob(base64String);
+    const byteArray = new Uint8Array(binaryString.length);
+
+    for (let i = 0; i < binaryString.length; i++) {
+        byteArray[i] = binaryString.charCodeAt(i);
+    }
+
+    return new Blob([byteArray], { type: 'image/png' });
+};
 
 export default function Teste() {
     const { id } = useParams();
@@ -44,12 +56,16 @@ export default function Teste() {
         }
     };
 
+    const imagemSrc = eventoSelecionado.imagem
+        ? URL.createObjectURL(decodeBase64Image(eventoSelecionado.imagem))
+        : placehold;
+
     return (
         <div className="pageTeste">
             <Header/>
             <div className="flex items-center justify-center mt-4">
                 <div className="imagemVisualizar p-4">
-                    <img src="src/assets/splash.png" className="mx-auto h-full w-full max-w-full" alt="Imagem do Evento"/>
+                    <img src={imagemSrc} alt="Imagem do Evento" className="mx-auto h-full w-full max-w-full"/>
                 </div>
             </div>
             <div className="testt">
