@@ -55,7 +55,13 @@ export default function Home() {
                     return (
                         // eslint-disable-next-line react/jsx-key
                         <Link key={evento.id} to={`/teste/${evento.id}`} className="evento1">
-                            <div className="flex mx-auto h-full w-full max-w-full"><img src={imagemSrc} alt="Imagem do Evento" /></div>
+                            <div className="flex mx-auto h-full w-full max-w-full overflow-hidden">
+                                <img
+                                    src={imagemSrc}
+                                    alt="Imagem do Evento"
+                                    className="object-cover w-full h-full"
+                                />
+                            </div>
                             <div className="descricao">
                                 <div className="texDes">
                                     <div className="mes-dia">
@@ -68,7 +74,7 @@ export default function Home() {
                                         <label className="mes"> {evento.horario}</label>
                                     </div>
                                     <label className="nome">{evento.nome}</label>
-                                    <label className="preco">R$ {evento.preco}</label>
+                                    <label className="preco">R$ {evento.preco},00</label>
                                     <div className="location">
                                         <FaLocationDot className="" /><label className="ml-1 preco">{evento.endereco}</label>
                                     </div>

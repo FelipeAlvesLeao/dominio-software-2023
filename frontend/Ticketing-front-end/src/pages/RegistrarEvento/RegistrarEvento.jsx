@@ -51,7 +51,7 @@ export default function RegistrarEvento() {
                 return;
             }
 
-            const formattedDate = new Date(formData.dataInicial).toString();
+            const formattedDate = formatDate(formData.dataInicial);
 
             const formattedTime = `${formData.horario}h`;
 
@@ -66,6 +66,7 @@ export default function RegistrarEvento() {
             formdata.append("reservasAtuais", "1");
             formdata.append("duracao", "3h");
             formdata.append("horario", formattedTime);
+            formdata.append("tipo", formData.tipo)
             formdata.append("organizador", userId.toString());
 
             if (formData.imagem) {
@@ -103,6 +104,11 @@ export default function RegistrarEvento() {
                 reader.onerror = reject;
                 reader.readAsDataURL(image);
             });
+        };
+
+        const formatDate = (dateString) => {
+            const [year, month, day] = dateString.split('-');
+            return `${month}/${day}/${year}`;
         };
 
         return (
@@ -151,7 +157,7 @@ export default function RegistrarEvento() {
                                         <h1 className="mr-80">Descrição do Evento</h1>
                                         <input onChange={(e) => setFormData({...formData, descricao: e.target.value})} value={formData.descricao} className="w-96" type="text"/>
                                     </div>
-                                    /<div className="mt-10">
+                                    <div className="mt-10">
                                 <h1>Adicione uma imagem</h1>
                                 <input type="file" onChange={handleFileChange} accept="image/*"/>
                             </div>

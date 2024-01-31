@@ -26,7 +26,7 @@
 
 .evento1 {
     display: flex;
-    width: 285px;
+    width: 288px;
     height: 288px;
     flex-direction: column;
     justify-content: center;
@@ -36,9 +36,6 @@
     margin-top: 20px;
 }
 
-.imagemEvento img{
-    display: flex;
-}
 
 .descricao {
     display: flex;
@@ -47,6 +44,7 @@
     align-items: center;
     border: 1px solid #828282;
     background: #FFF;
+
 }
 
 .texDes{

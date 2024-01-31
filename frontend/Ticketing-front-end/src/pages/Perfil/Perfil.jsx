@@ -6,6 +6,7 @@ import { IoTrashBinOutline } from "react-icons/io5";
 import './PerfilS.css';
 import { useAuth } from '../../AuthContext.jsx';
 import placehold from "../../assets/splash.png";
+import {Link} from "react-router-dom";
 
 export default function Perfil() {
     const {userId} = useAuth();
@@ -102,7 +103,7 @@ export default function Perfil() {
                     return (
                         // eslint-disable-next-line react/jsx-key
                         <div className="ingresso" key={evento.id}>
-                            <div className="ingresso1">
+                            <Link to={`/editar/${evento.id}`} className="ingresso1">
                                 <div className="flex mx-auto h-full w-full max-w-full">
                                     <img src={imagemSrc} alt="Imagem do Evento"/>
                                 </div>
@@ -125,11 +126,11 @@ export default function Perfil() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <button className="binIcon" onClick={() => handleDeleteEvento(evento.id)}>
-                                <h2><IoTrashBinOutline/></h2>
+                            </Link>
+                            <div className="binIcon" >
+                                <button onClick={() => handleDeleteEvento(evento.id)}><IoTrashBinOutline/></button>
                                 <h1>Excluir Evento</h1>
-                            </button>
+                            </div>
                         </div>
                     )
                 })}

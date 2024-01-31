@@ -42,16 +42,20 @@ export default function Teste() {
         if (userId) {
             // Se usuário logado, botão "Comprar" com a lógica atual
             return (
-                <Link key={eventoSelecionado.id} to={`/comprar/${eventoSelecionado.id}`}>
-                    <button className="buton">Comprar</button>
-                </Link>
+                <div className="max-w-full">
+                    <Link key={eventoSelecionado.id} to={`/comprar/${eventoSelecionado.id}`}>
+                        <button className="buton">Comprar</button>
+                    </Link>
+                </div>
             );
         } else {
             // Se usuário deslogado, link para a página de login
             return (
-                <Link to="/login">
-                    <button className="buton">Login para Comprar</button>
-                </Link>
+                <div className="max-w-full">
+                    <Link to="/login">
+                        <button className="buton">Login</button>
+                    </Link>
+                </div>
             );
         }
     };
@@ -63,6 +67,7 @@ export default function Teste() {
     return (
         <div className="pageTeste">
             <Header/>
+            <div className="h-screen">
             <div className="flex items-center justify-center mt-4">
                 <div className="imagemVisualizar p-4">
                     <img src={imagemSrc} alt="Imagem do Evento" className="mx-auto h-full w-full max-w-full"/>
@@ -99,6 +104,7 @@ export default function Teste() {
                         <label className="tipo3">{eventoSelecionado.descricao}</label>
                     </div>
                 </div>
+            </div>
             </div>
             <Footer/>
         </div>
